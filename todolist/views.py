@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .forms import TaskForm
 from .models import Task
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 # Create your views here.
 
@@ -17,6 +19,16 @@ def index(request):
             return redirect("index")
 
     tasks = Task.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(tasks, 10)
+    try:
+        tasks = paginator.page(page)
+    except PageNotAnInteger:
+        tasks = paginator.page(1)
+    except EmptyPage:
+        tasks = paginator.page(paginator.num_pages)
+
     return render(request, "index.html", {"task_form": form, "tasks": tasks})
 
 
