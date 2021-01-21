@@ -80,13 +80,14 @@ WSGI_APPLICATION = "todoapp.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "awwtodo",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "localhost",
+        "NAME": "ddjbgd7pc3p908",
+        "USER": "bsjxwxqmvpwnhr",
+        "PASSWORD": "4fa1b61fdbd256281c2f945733bb6937e61ecddd84747cad4a1cef6d0a83b377",
+        "HOST": "ec2-3-216-92-193.compute-1.amazonaws.com",
         "PORT": "5432",
     },
 }
+
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
